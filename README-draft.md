@@ -43,9 +43,9 @@ $ virtualenv --no-site-packages VIRT_ENV
 
 #### 3. Set environment variables for compiling the C++ part of MOE. We suggest creating a textfile "moe_setup.sh" with the following content:
 ```bash
-export MOE_CC_PATH=/path/to/your/gcc
-export MOE_CXX_PATH=/path/to/your/g++
-export MOE_CMAKE_OPTS="-D MOE_PYTHON_INCLUDE_DIR=/path/to/where/Python.h/is/found -D MOE_PYTHON_LIBRARY=/path/to/python/shared/library/object"
+export MOE_CXX_PATH=/path/to/g++
+export MOE_CC_PATH=/path/to/gcc
+export MOE_CMAKE_OPTS="-D MOE_PYTHON_INCLUDE_DIR=/path/to/include/python2.7 -D MOE_PYTHON_LIBRARY=/path/to/libpython2.7.so"
 ```
 Then source this file via
 ```bash
