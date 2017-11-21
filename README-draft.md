@@ -12,7 +12,7 @@ or a subset of the validation set.
 While cheap approximations offer a route to drastically reduce optimization costs, they are often subject to unknown bias and noise. Specifically, information sources typically exhibit "model discrepancy", originating from inherent limitations of their underlying computational models to model real-world phenomena.
 
 ## The misoKG algorithm
-The misoKG algorithm proposed by [Matthias Poloczek][4], [Jialei Wang][6], and [Peter Frazier][5] is tolerant to both noise and bias and efficiently leverages cheap information sources, maximizing the expected incremental gain per unit cost.
+The misoKG algorithm proposed by [Matthias Poloczek][4], [Jialei Wang][6], and [Peter Frazier][5] is tolerant to both noise and bias. Therefore, it is able to efficiently leverage cheap information sources, maximizing the expected incremental gain per unit cost.
 
 An example illustrating the statistical model of misoKG:
 <center><img src="https://github.com/misoKG/NIPS2017/example/stat-model.gif" height="300" width="600"></center>
