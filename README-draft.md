@@ -86,7 +86,9 @@ $ coming soon
 ```
 
 ## Supported Platforms
-Python 2.7 and higher
+Python 2.7 and higher. 
+
+At this time, we do not plan to support Python 3+. If you give it a try, please let us know.
 
 [1]: https://github.com/Yelp/MOE
 [2]: http://yelp.github.io/MOE/install.html#install-from-source
