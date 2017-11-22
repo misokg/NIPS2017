@@ -8,7 +8,7 @@ This setting has multiple applications (see [the NIPS paper][3] for details):
 * hyperparameter tuning of machine learning algorithms: we can evaluate hyperparameters on a small related data set
 or a subset of the validation set.
 * robotics: we may evaluate a parameterized robot control policy in simulation, in a laboratory, or in a field test.
-* reinforcement learning: we may run the policy of a simulation of nature.
+* aerospace engineering: we may test a design in a simulation or a wind-tunnel experiment.
 
 While cheap approximations offer a route to drastically reduce optimization costs, they are often subject to unknown bias and noise. Specifically, information sources typically exhibit "model discrepancy", originating from inherent limitations of their underlying computational models to model real-world phenomena.
 
