@@ -15,10 +15,6 @@ While cheap approximations offer a route to drastically reduce optimization cost
 ## The misoKG algorithm
 The misoKG algorithm proposed by [Matthias Poloczek][4], [Jialei Wang][6], and [Peter Frazier][5] is tolerant to both noise and bias. Therefore, it is able to efficiently leverage cheap information sources, maximizing the expected incremental gain per unit cost.
 
-An example illustrating the statistical model of misoKG:
-<center><img src="https://github.com/misoKG/NIPS2017/example/stat-model.gif" height="300" width="600"></center>
-
-
 ## Installation
 This implementation of the misoKG algorithm is built upon the [Metric Optimization Engine][1] (MOE), a global, black box optimization engine for real world metric optimization.
 
@@ -99,7 +95,7 @@ Note that the last figure must be a nonnegative integer. It is used for the file
 ## Supported Platforms
 Python 2.7 and higher. 
 
-At this time, we do not plan to support Python 3+. If you give it a try, please let us know.
+Currently, there is no time line on Python 3+ support.
 
 [1]: https://github.com/Yelp/MOE
 [2]: http://yelp.github.io/MOE/install.html#install-from-source
