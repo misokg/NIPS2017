@@ -71,17 +71,19 @@ $ pip install -r requirements.txt
 ```
 
 ## Example running misoKG on a benchmark
-Try
+Run
 ```bash
 $ python run_misoKG.py miso_rb_benchmark_mkg 0 0
 ```
-for the Rosenbrock function proposed by Lam, Allaire, and Willcox (2015) or 
+for the Rosenbrock function proposed by Lam, Allaire, and Willcox (2015), or 
 ```bash
 $ python run_misoKG.py miso_rb_benchmark_mkg 1 0
 ```
 for the noisy variant proposed in the MISO paper.
-The results are stored in a pickle in the same folder. The filename is output by the program.
+
+The results are stored in a pickled dictionary in the same folder. The filename is output when the program starts.
 Note that the last figure must be a nonnegative integer. It is used for the filename, e.g., when running multiple replications.
+
 
 ## Citation
 ```bash
