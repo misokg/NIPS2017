@@ -15,6 +15,9 @@ While cheap approximations offer a route to drastically reduce optimization cost
 ## The misoKG algorithm
 The misoKG algorithm proposed by [Matthias Poloczek][4], [Jialei Wang][6], and [Peter Frazier][5] is tolerant to both noise and bias. Therefore, it is able to efficiently leverage cheap information sources, maximizing the expected incremental gain per unit cost.
 
+### A MISO-specific generative model
+<center><img src="https://github.com/misokg/nips/illustration_misoKG_model.gif" height="600" width="400"></center>
+
 ## Installation
 This implementation of the misoKG algorithm is built upon the [Metric Optimization Engine][1] (MOE), a global, black box optimization engine for real world metric optimization.
 
