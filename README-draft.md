@@ -1,6 +1,6 @@
 # The misoKG algorithm for Multi-Information Source Optimization
 
-# Coming soon!
+
 
 ## What is Multi-Information Source Optimization?
 In multi-information source optimization (MISO) the taks is to optimize an expensive-to-evaluate black-box objective function while optionally accessing cheaper biased noisy approximations, often referred to as "information sources (IS)".
