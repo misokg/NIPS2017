@@ -4,11 +4,11 @@
 
 ## What is Multi-Information Source Optimization?
 In multi-information source optimization (MISO) the taks is to optimize an expensive-to-evaluate black-box objective function while optionally accessing cheaper biased noisy approximations, often referred to as "information sources (IS)".
-This setting has multiple applications (see [the NIPS paper][3] for details):
+This setting has multiple applications (see [the spotlight video][7] or [the NIPS paper][3] for details):
 * hyperparameter tuning of machine learning algorithms: we can evaluate hyperparameters on a small related data set
 or a subset of the validation set.
 * robotics: we may evaluate a parameterized robot control policy in simulation, in a laboratory, or in a field test.
-* aerospace engineering: we may test a design in a simulation or a wind-tunnel experiment.
+* aerospace engineering: we may test a design in a simulation or in a wind-tunnel experiment.
 
 While cheap approximations offer a route to drastically reduce optimization costs, they are often subject to unknown bias and noise. Specifically, information sources typically exhibit "model discrepancy", originating from inherent limitations of their underlying computational models to model real-world phenomena.
 
@@ -16,7 +16,7 @@ While cheap approximations offer a route to drastically reduce optimization cost
 The misoKG algorithm proposed by [Matthias Poloczek][4], [Jialei Wang][6], and [Peter Frazier][5] is tolerant to both noise and bias. Therefore, it is able to efficiently leverage cheap information sources, maximizing the expected incremental gain per unit cost.
 
 ### A MISO-specific generative model
-Suppose that there are two information sources IS 1 and IS 2 that approximate the true objective IS 0. These information sources may each be subject to an unknown bias.  Denote the bias of IS 1 by delta_1(x) = IS0(x) - IS1(x).  delta_2 is defined analogously.
+Suppose that there are two information sources IS 1 and IS 2 that approximate the true objective IS 0. These information sources may each be subject to an unknown bias.  We denote the (unknown) bias of IS 1 by delta1(x) = IS1(x) - IS0(x).  delta2 is defined analogously.
 
 The following animation illustrates how the posterior belief about the internal models of the information sources and the involved biases evolves as we obtain samples from each IS.  In each frame the solid lines give the unknown functions of the models and model discrepancies, whereas the dashed lines show the respective posterior means. The posterior variance is indicated by dots. 
 All observations are noiseless.  
@@ -114,3 +114,4 @@ Currently, there is no time line on Python 3+ support.
 [4]: http://www.sie.arizona.edu/poloczek
 [5]: http://people.orie.cornell.edu/pfrazier/
 [6]: http://www.linkedin.com/in/jialeiwang/
+[7]: http://youtu.be/edgbDQJKzTo
