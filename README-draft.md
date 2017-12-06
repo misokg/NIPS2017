@@ -18,9 +18,13 @@ The misoKG algorithm proposed by [Matthias Poloczek][4], [Jialei Wang][6], and [
 ### A MISO-specific generative model
 Suppose that there are two information sources IS 1 and IS 2 that approximate the true objective IS 0. These information sources may each be subject to an unknown bias.  Denote the bias of IS 1 by delta_1(x) = IS0(x) - IS1(x).  delta_2 is defined analogously.
 
-The following animation illustrates how the posterior belief about the internal models of the information sources and the involved biases evolves as we obtain samples from each IS.
-Note that all observations are noiseless.  Initially, all IS are sampled at the same points.
+The following animation illustrates how the posterior belief about the internal models of the information sources and the involved biases evolves as we obtain samples from each IS.  In each frame the solid lines give the unknown functions of the models and model discrepancies, whereas the dashed lines show the respective posterior means. The posterior variance is indicated by dots. 
+All observations are noiseless.  
+
+Initially, all IS are sampled at the same points. This is the posterior depicted on the second frame. Observe how the posterior of IS 0 is affected from observations at IS 1, IS 2, and IS 0 itself.
 <img src="https://github.com/misokg/NIPS2017/blob/master/illustration_misoKG_model.gif" height="530" width="582">
+
+
 
 ## Installation
 This implementation of the misoKG algorithm is built upon the [Metric Optimization Engine][1] (MOE), a global, black box optimization engine for real world metric optimization.
@@ -84,8 +88,8 @@ $ python run_misoKG.py miso_rb_benchmark_mkg 1 0
 ```
 for the noisy variant proposed in the MISO paper.
 
-The results are stored in a pickled dictionary in the same folder. The filename is output when the program starts.
-Note that the last figure must be a nonnegative integer. It is used for the filename, e.g., when running multiple replications.
+The results are stored in a pickled dictionary in the current working directory. The filename is output when the program starts.
+Note that the last parameter is a nonnegative integer that is used for the filename, e.g., when running multiple replications.
 
 
 ## Citation
