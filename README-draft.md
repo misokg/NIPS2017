@@ -16,6 +16,11 @@ While cheap approximations offer a route to drastically reduce optimization cost
 The misoKG algorithm proposed by [Matthias Poloczek][4], [Jialei Wang][6], and [Peter Frazier][5] is tolerant to both noise and bias. Therefore, it is able to efficiently leverage cheap information sources, maximizing the expected incremental gain per unit cost.
 
 ### A MISO-specific generative model
+Suppose that there are two information sources IS 1 and IS 2 that approximate the true objective IS 0. These information sources may each be subject to an unknown bias.  Denote the bias of IS 1 by delta_1(x) = IS0(x) - IS1(x).  delta_2 is defined analogously.
+
+The following animation illustrates how the posterior belief about the internal models of the information sources and the involved biases evolves as we obtain samples from each IS.
+Note that all observations are noiseless.  Initially, all IS are sampled at the same points.
+
 <center><img src="https://github.com/misokg/NIPS2017/blob/master/illustration_misoKG_model.gif" height="1060" width="1164"></center>
 
 ## Installation
