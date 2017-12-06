@@ -1,7 +1,5 @@
 # The misoKG algorithm for Multi-Information Source Optimization
 
-
-
 ## What is Multi-Information Source Optimization?
 In multi-information source optimization (MISO) the taks is to optimize an expensive-to-evaluate black-box objective function while optionally accessing cheaper biased noisy approximations, often referred to as "information sources (IS)".
 This setting has multiple applications (see [the spotlight video][7] or [the NIPS paper][3] for details):
@@ -48,7 +46,12 @@ export MOE_CMAKE_OPTS="-D MOE_PYTHON_INCLUDE_DIR=/path/to/include/python2.7 -D M
 ```
 Then source this file via
 ```bash
-source ./moe_setup.sh
+$ source ./moe_setup.sh
+```
+Note that the file "libpython2.7.so" can be located via
+```bash
+$ sudo updatedb
+$ locate libpython2.7.so
 ```
 
 #### 4. Install MOE in the virtualenv:
