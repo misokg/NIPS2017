@@ -20,8 +20,7 @@ Suppose that there are two information sources IS 1 and IS 2 that approximate th
 
 The following animation illustrates how the posterior belief about the internal models of the information sources and the involved biases evolves as we obtain samples from each IS.
 Note that all observations are noiseless.  Initially, all IS are sampled at the same points.
-
-<center><img src="https://github.com/misokg/NIPS2017/blob/master/illustration_misoKG_model.gif" height="530" width="582"></center>
+<img src="https://github.com/misokg/NIPS2017/blob/master/illustration_misoKG_model.gif" height="530" width="582">
 
 ## Installation
 This implementation of the misoKG algorithm is built upon the [Metric Optimization Engine][1] (MOE), a global, black box optimization engine for real world metric optimization.
