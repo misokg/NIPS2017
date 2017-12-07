@@ -26,8 +26,8 @@ Then we will install misoKG.
 MOE requires python 2.6.7+, gcc 4.7.3+, cmake 2.8.9+, boost 1.51+, pip 1.2.1+, doxygen 1.8.5+.
 
 ```bash
-$ apt-get update
-$ apt-get install python python-dev gcc cmake libboost-all-dev python-pip doxygen libblas-dev liblapack-dev gfortran git python-numpy python-scipy
+$ sudo apt-get update
+$ sudo apt-get install python python-dev gcc cmake libboost-all-dev python-pip doxygen libblas-dev liblapack-dev gfortran git python-numpy python-scipy
 ```
 
 #### 2. Setup a virtual environment:
@@ -57,28 +57,28 @@ $ locate libpython2.7.so
 #### 4. Install MOE in the virtualenv:
 ```bash
 $ source VIRT_ENV/bin/activate
-$ git clone -b jialei_mixed_square_exponential https://github.com/Yelp/MOE.git
-$ cd MOE
-$ pip install -r requirements.txt
-$ python setup.py install
+(VIRT_ENV) $ git clone -b jialei_mixed_square_exponential https://github.com/Yelp/MOE.git
+(VIRT_ENV) $ cd MOE
+(VIRT_ENV) $ pip install -r requirements.txt
+(VIRT_ENV) $ python setup.py install
 ```
 
 #### 5. Install misoKG:
 ```bash
-$ source VIRT_ENV/bin/activate
-$ git clone https://github.com/misokg/NIPS2017.git
-$ cd misoKG
-$ pip install -r requirements.txt
+(VIRT_ENV) $ cd ..
+(VIRT_ENV) $ git clone https://github.com/misokg/NIPS2017.git
+(VIRT_ENV) $ cd misoKG
+(VIRT_ENV) $ pip install -r requirements.txt
 ```
 
 ## Example running misoKG on a benchmark
 Run
 ```bash
-$ python run_misoKG.py miso_rb_benchmark_mkg 0 0
+(VIRT_ENV) $ python run_misoKG.py miso_rb_benchmark_mkg 0 0
 ```
 for the Rosenbrock function proposed by Lam, Allaire, and Willcox (2015), or 
 ```bash
-$ python run_misoKG.py miso_rb_benchmark_mkg 1 0
+(VIRT_ENV) $ python run_misoKG.py miso_rb_benchmark_mkg 1 0
 ```
 for the noisy variant proposed in the MISO paper.
 
