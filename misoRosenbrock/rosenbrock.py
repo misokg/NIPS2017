@@ -55,6 +55,9 @@ class RosenbrockRemi(object):
     def get_moe_domain(self):
         return TensorProductDomain([ClosedInterval(bound[0], bound[1]) for bound in self._search_domain])
 
+    def get_meanval(self):
+        return self._meanval
+
 class RosenbrockNew(RosenbrockRemi):
     """ test function for entropy search: IS0 is unbiased IS, IS 1 is biased
     u = 1, v = 2

@@ -11,7 +11,7 @@ def sample_initial_data(problem, num_initial_pts_per_IS):
     new_historical_data = HistoricalData(dim=problem.obj_func_min.getDim() + 1)  # increased by one for index of IS
     for IS in problem.obj_func_min.getList_IS_to_query():
         points_dict[IS] = np.hstack((IS * np.ones(num_initial_pts_per_IS).reshape((-1, 1)), points))
-        vals_dict[IS] = np.array([problem.obj_func_min.evaluate(IS, pt) for pt in points])
+        vals_dict[IS] = np.array([-1.0 * problem.obj_func_min.evaluate(IS, pt) for pt in points])
         noise_dict[IS] = np.ones(len(points)) * problem.obj_func_min.noise_and_cost_func(IS, None)[0]
         # note: misoKG will learn the noise from sampled data
         new_historical_data.append_historical_data(points_dict[IS], vals_dict[IS], noise_dict[IS])

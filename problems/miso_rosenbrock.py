@@ -25,7 +25,8 @@ class MisoRosenbrockBenchmark(object):
 
     @property
     def num_iterations(self):
-        return 25
+        return 15
+        # increase for more steps of the BO algorithm
 
     @property
     def truth_is(self):
