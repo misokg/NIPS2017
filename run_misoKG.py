@@ -34,24 +34,29 @@ problem = identify_problem(argv, None)
 filename_result = 'misoKG_results_repl_' + str(problem.replication_no) +'.pickle'
 print 'Results are written into file ' + filename_result
 
-# algorithm params
-exploitation_threshold = 1e-5
-# if the KG/unit_cost drops below this, then sample at optimum of posterior mean.
-# The exploitation IS is defined in problem object.
-num_x_prime = 3000
-num_discretization_before_ranking = num_x_prime * 2
-num_multistart = 16 # number of starting points when searching for optimum of posterior mean and maximum KG factor
+### Fast demo mode
+num_x_prime = 2000
+num_multistart = 8 # number of starting points when searching for optimum of posterior mean and maximum KG factor
 num_threads = -1 # how many jobs to use in parallelization? This uses all CPUs, reduce for parallel runs of misoKG
-num_parallel_inst = 16 # how many parallel instances of the benchmark
-num_initial_pts_per_IS = 5 # how many initial points for each IS
-if 'lrMU' in problem.obj_func_min.getFuncName():
-    num_parallel_inst = 1 # lrMU does not allow parallel instances
+num_parallel_inst = 1 # how many instances of the benchmark can be run in parallel?
+num_initial_pts_per_IS = 10 # how many initial points for each IS
+#
+### Experiment mode
+# num_x_prime = 3000
+# num_multistart = 32 # number of starting points when searching for optimum of posterior mean and maximum KG factor
+# num_threads = -1 # how many jobs to use in parallelization? This uses all CPUs, reduce for parallel runs of misoKG
+# num_parallel_inst = -1 # how many instances of the benchmark can be run in parallel?
+# num_initial_pts_per_IS = 5 # how many initial points for each IS
 
 ### sample initial points, extend points by IS index, and store them as historical data
 problem.set_hist_data = sample_initial_data(problem, num_initial_pts_per_IS)
 
 ### mkg begins
 kg_gp_cpp = None
+num_discretization_before_ranking = num_x_prime * 2
+# if the KG/unit_cost drops below this, then sample at optimum of posterior mean.
+# The exploitation IS is defined in problem object.
+exploitation_threshold = 1e-5
 # data containers for pickle storage
 list_best = []
 list_cost = [] # cumulative cost so far
@@ -63,8 +68,9 @@ list_mu_star_truth = [] # list of values at resp. mu_star_points under IS0
 list_pending_mu_star_points = []
 list_raw_voi = []
 init_best_idx = numpy.argmax(problem.hist_data._points_sampled_value[problem.hist_data._points_sampled[:, 0] == problem.truth_is])
-best_sampled_val = -1.0 * problem.hist_data._points_sampled_value[init_best_idx]    # minus sign is because vals in hist_data were
-# obtained from obj_func_max, while all values to store are from obj_func_min, for consistency
+best_sampled_val = -1.0 * problem.hist_data._points_sampled_value[init_best_idx]
+# minus sign is because vals in hist_data were obtained from obj_func_max, while all values to store are
+# from obj_func_min, for consistency
 truth_at_init_best_sampled = best_sampled_val
 truth_at_best_sampled = truth_at_init_best_sampled
 best_mu_star_truth = np.inf
@@ -90,7 +96,7 @@ for kg_iteration in xrange(problem.num_iterations):
                                               current_hist_data.points_sampled, current_hist_data.points_sampled_value,
                                               upper_bound_noise_variances=10., consider_small_variances = True,
                                               hyper_prior=hyper_prior,
-                                              num_restarts = 64, num_jobs = num_threads)
+                                              num_restarts = 16, num_jobs = num_threads)
         # update hyperparameters for noise for each observed value in historical data
         # current_hist_data.points_sampled_noise_variance gives the array with noise values
 
@@ -245,16 +251,6 @@ for kg_iteration in xrange(problem.num_iterations):
     mu_star_point = search_mu_star_point(kg_gp_cpp, list_sampled_points, point_to_sample, num_multistart, num_threads, problem)
     list_pending_mu_star_points.append(mu_star_point)
 
-    # Print progress to stdout
-    if len(list_mu_star_truth) > 0:
-        print 'repl ' + str(problem.replication_no) + ', it ' + str(kg_iteration) + ', IS ' \
-              + str(sample_is) + ' at ' + str(point_to_sample) \
-              + ', best_mu_star = ' + str(np.min(list_mu_star_truth)) + ' out of ' + str(len(list_mu_star_truth))
-        # ', list_pending_mu_star_points = ' + str(list_pending_mu_star_points)
-    else:
-        print 'repl ' + str(problem.replication_no) + ', it ' + str(kg_iteration) + ', IS ' \
-              + str(sample_is) + ' at ' + str(point_to_sample)
-
 
 
     ### perform batched evaluation of mu_star points at truthIS, since they can delay the iteration significantly
@@ -266,7 +262,16 @@ for kg_iteration in xrange(problem.num_iterations):
         list_mu_star_truth.extend(vals_pending_mu_star_points)
         list_pending_mu_star_points = []
 
-
+    # Print progress to stdout
+    if len(list_mu_star_truth) > 0:
+        print 'repl ' + str(problem.replication_no) + ', it ' + str(kg_iteration) + ', sample IS ' \
+              + str(sample_is) + ' at ' + str(point_to_sample) \
+              + ', recommendation ' + str(mu_star_point) +' has (observed) value ' + str(list_mu_star_truth[-1]
+                                                                              + problem.obj_func_min.get_meanval())
+        # ', list_pending_mu_star_points = ' + str(list_pending_mu_star_points)
+    else:
+        print 'repl ' + str(problem.replication_no) + ', it ' + str(kg_iteration) + ', sample IS ' \
+              + str(sample_is) + ' at ' + str(point_to_sample)
 
     ### Collect data for pickle
     total_cost += problem.obj_func_min.noise_and_cost_func(sample_is, point_to_sample)[1]
