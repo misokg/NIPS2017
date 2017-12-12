@@ -1,7 +1,7 @@
 # The misoKG algorithm for Multi-Information Source Optimization
 
 ## What is Multi-Information Source Optimization?
-In multi-information source optimization (MISO) the taks is to optimize an expensive-to-evaluate black-box objective function while optionally accessing cheaper biased noisy approximations, often referred to as "information sources (IS)".
+In multi-information source optimization (MISO) the task is to optimize an expensive-to-evaluate black-box objective function while optionally accessing cheaper biased noisy approximations, often referred to as "information sources (IS)".
 This setting has multiple applications (see [the spotlight video][7] and [the NIPS paper][3] for details):
 * hyperparameter tuning of machine learning algorithms: we can evaluate hyperparameters on a small related data set
 or a subset of the validation set.
