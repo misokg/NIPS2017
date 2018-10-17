@@ -1,4 +1,4 @@
 # If you add/remove requirements here, update ``requires`` in ``setup.py`` (root directory)
-numpy>=1.11.1
-joblib>=0.11
-pandas>=0.18
+numpy==1.11.1
+joblib==0.11
+pandas==0.18
