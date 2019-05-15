@@ -83,7 +83,7 @@ $ source VIRT_ENV/bin/activate
 ---
 
 
-## Example running misoKG on a benchmark
+## An example running misoKG on a benchmark
 Run
 ```bash
 (VIRT_ENV) $ python run_misoKG.py miso_rb_benchmark_mkg 0 0
